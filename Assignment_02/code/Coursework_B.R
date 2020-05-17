@@ -1,0 +1,48 @@
+# Appendix A-Source Code]
+setwd ("C: \ \ Users \\ pc1 \\Desktop \\ Seminar \\Assignment2 ")
+l i b r a r y (" dplyr ")
+d <􀀀 read . csv (" data . csv ")
+ndcg<􀀀subs e t (d , me t r i c=="ndcg ")
+ap<􀀀subs e t (d , me t r i c=="ap ")
+e r r<􀀀subs e t (d , me t r i c=="e r r ")
+p10<􀀀subs e t (d , me t r i c=="p10 ")
+rbp<􀀀subs e t (d , me t r i c=="rbp ")
+ndcgScores<􀀀ndcg%>%group_by ( token , lug ,model)%>% summarize (mean=(mean( s c o r e ) ) )
+apScores<􀀀ap%>%group_by ( token , lug ,model)%>% summarize (mean=(mean( s c o r e ) ) )
+e r rSc o r e s<􀀀e r r%>%group_by ( token , lug ,model)%>% summarize (mean=(mean( s c o r e ) ) )
+p10Scores<􀀀p10%>%group_by ( token , lug ,model)%>% summarize (mean=(mean( s c o r e ) ) )
+rbpScores<􀀀rbp%>%group_by ( token , lug ,model)%>% summarize (mean=(mean( s c o r e ) ) )
+ndcgScores$rank <􀀀 NA
+ndcgScores$rank [ orde r ( ndcgScores$mean ) ] <􀀀 1 : nrow( ndcgScores )
+apScores$rank <􀀀 NA
+apScores$rank [ orde r ( apScores$mean ) ] <􀀀 1 : nrow( apScor e s )
+e r rSc o r e s $ r ank <􀀀 NA
+e r rSc o r e s $ r ank [ orde r ( er rScores$mean ) ] <􀀀 1 : nrow( e r r S c o r e s )
+p10Scores$rank <􀀀 NA
+p10Scores$rank [ orde r ( p10Scores$mean ) ] <􀀀 1 : nrow( p10Scores )
+rbpScor e s$rank <􀀀 NA
+rbpScor e s$rank [ orde r ( rbpScores$mean ) ] <􀀀 1 : nrow( rbpScor e s )
+f i n a l <􀀀data . frame ( ndcgScores$token , ndcgScores$lug , ndcgScores$model , ndcgScores$rank , apScores$f i n a l $ t o t a l S c o r e <􀀀 rowSums ( f i n a l [ 4 : 8 ] )
+i n s t a l l . packages (" dplyr ")
+###################################1b###############################
+r e q u i r e (Matrix )
+l i b r a r y ( lme4 )
+l i b r a r y (MASS)
+l i b r a r y ( f o r e i g n )
+l i b r a r y ( car )
+l i b r a r y ( ggplot2 )
+l i b r a r y ( nlme )
+l i b r a r y ( r e shape )
+l i b r a r y ( g r aphi c s )
+r e q u i r e ( l a t t i c e )
+l i b r a r y ( l a t t i c e )
+r e q u i r e (Matrix )
+l i b r a r y ( lme4 )
+4
+model0<􀀀lm( d$s cor e ~1)
+model1 <􀀀 lm( d$s cor e ~ lug , data=d)
+model2<􀀀lm( d$s cor e ~ token , data=d)
+model3<􀀀lm( d$s cor e ~ model , data=d)
+anova (model0 , model1 , t e s t = "F")
+anova (model0 , model2 , t e s t = "F")
+anova (model0 , model3 , t e s t = "F")
